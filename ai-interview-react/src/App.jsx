@@ -3,9 +3,11 @@ import Header from "./components/Header";
 import QuestionBox from "./components/QuestionBox";
 import WebcamPreview from "./components/WebcamPreview";
 import UserForm from "./components/UserForm";
+import AnswerBox from "./components/AnswerBox";
 
 function App() {
   const [interviewStarted, setInterviewStarted] = useState(false);
+  const [currentQuestion, setCurrentQuestion] = useState("");
 
   const handleStart = () => {
     setInterviewStarted(true);
@@ -35,7 +37,8 @@ function App() {
       ) : (
         <section style={{ marginTop: "30px", backgroundColor: "#f8f9fa", padding: "20px", borderRadius: "10px" }}>
           <h2>Interview Question</h2>
-          <QuestionBox />
+          <QuestionBox onQuestionChange={setCurrentQuestion} />
+          <AnswerBox question={currentQuestion} />
           <WebcamPreview />
         </section>
       )}

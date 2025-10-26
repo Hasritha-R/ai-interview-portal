@@ -20,7 +20,7 @@ function QuestionBox({ onQuestionChange }) {
       });
     }, 10000);
 
-    onQuestionChange(questions[0]); // Initial question
+    onQuestionChange(questions[0]);
 
     return () => clearInterval(interval);
   }, []);

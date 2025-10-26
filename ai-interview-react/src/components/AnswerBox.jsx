@@ -5,7 +5,6 @@ function AnswerBox({ question }) {
   const [saved, setSaved] = useState(false);
 
   useEffect(() => {
-    // Load saved answer if exists
     const savedAnswer = localStorage.getItem(`answer-${question}`);
     if (savedAnswer) {
       setAnswer(savedAnswer);
