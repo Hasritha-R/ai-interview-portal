@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-function QuestionBox() {
+function QuestionBox({ onQuestionChange }) {
   const questions = [
     "Tell me about yourself.",
     "What are your strengths?",
@@ -13,8 +13,14 @@ function QuestionBox() {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % questions.length);
+      setCurrentIndex((prevIndex) => {
+        const nextIndex = (prevIndex + 1) % questions.length;
+        onQuestionChange(questions[nextIndex]);
+        return nextIndex;
+      });
     }, 10000);
+
+    onQuestionChange(questions[0]); // Initial question
 
     return () => clearInterval(interval);
   }, []);
